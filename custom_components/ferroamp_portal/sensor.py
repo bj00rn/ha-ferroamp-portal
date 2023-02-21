@@ -49,8 +49,8 @@ sensors = {
             name="EV Active power",
             device_class=SensorDeviceClass.POWER,
             native_unit_of_measurement=UnitOfPower.WATT,
-            suggested_display_precision=1,
-            suggested_unit_of_measurement=UnitOfPower.KILO_WATT,
+            # suggested_display_precision=1,
+            # suggested_unit_of_measurement=UnitOfPower.KILO_WATT,
         ),
     },
     "energyActiveMeter": {
@@ -62,8 +62,8 @@ sensors = {
             device_class=SensorDeviceClass.ENERGY,
             native_unit_of_measurement=UnitOfEnergy.WATT_HOUR,
             state_class=SensorStateClass.TOTAL_INCREASING,
-            suggested_display_precision=1,
-            suggested_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+            # suggested_display_precision=1,
+            # suggested_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         ),
     },
     "currentL1": {
@@ -74,7 +74,7 @@ sensors = {
             name="EV Current L1",
             device_class=SensorDeviceClass.CURRENT,
             native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
-            suggested_display_precision=1,
+            # suggested_display_precision=1,
         ),
     },
     "currentL2": {
@@ -85,7 +85,7 @@ sensors = {
             name="EV Current L2",
             device_class=SensorDeviceClass.CURRENT,
             native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
-            suggested_display_precision=1,
+            # suggested_display_precision=1,
         ),
     },
     "currentL3": {
@@ -96,7 +96,7 @@ sensors = {
             name="EV Current L3",
             device_class=SensorDeviceClass.CURRENT,
             native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
-            suggested_display_precision=1,
+            # suggested_display_precision=1,
         ),
     },
 }
