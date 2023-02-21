@@ -1,0 +1,21 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "Enter Ferroamp Portal credentials",
+                "data": {
+                    "name": "Name",
+                    "username": "Username",
+                    "password": "Password",
+                    "system_id": "Facility Id"
+                }
+            }
+        },
+        "error": {
+            "connect": "Could not connect. Verify connection details"
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single instance is allowed."
+        }
+    }
+}
