@@ -1,4 +1,4 @@
-"""Adds config flow for SalerydLoke."""
+"""Config flow for integration"""
 import logging
 
 import voluptuous as vol
@@ -12,11 +12,10 @@ from .const import CONF_PASSWORD, CONF_SYSTEM_ID, CONF_USERNAME, DOMAIN, NAME
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-class SalerydLokeFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for SalerydLoke."""
+class FerroampPortalFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+    """Config flow for integration"""
 
     VERSION = 1
-    CONNECTION_CLASS = config_entries.CONN_CLASS_LOCAL_PUSH
 
     def __init__(self):
         """Initialize."""
@@ -86,50 +85,3 @@ class SalerydLokeFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             pass
 
         return False
-
-
-#     @staticmethod
-#     @callback
-#     def async_get_options_flow(config_entry):
-#         return SalerydLokeOptionsFlowHandler(config_entry)
-
-
-# class SalerydLokeOptionsFlowHandler(config_entries.OptionsFlow):
-#     """SalerydLoke config flow options handler."""
-
-#     def __init__(self, config_entry):
-#         self.config_entry = config_entry
-
-#     async def async_step_init(self, user_input=None):  # pylint: disable=unused-argument
-#         """Manage the options."""
-#         return await self.async_step_user()
-
-#     async def async_step_user(self, user_input=None):
-#         """Handle a flow initialized by the user."""
-#         errors: Dict[str, str] = {}
-
-#         if user_input is not None:
-#             if not errors:
-#                 return self.async_create_entry(title="", data=user_input)
-
-#         return self.async_show_form(
-#             step_id="user",
-#             data_schema=vol.Schema(
-#                 {
-#                     vol.Required(
-#                         CONF_WEBSOCKET_IP,
-#                         default=self.config_entry.data.get(CONF_WEBSOCKET_IP),
-#                     ): str,
-#                     vol.Required(
-#                         CONF_WEBSOCKET_PORT,
-#                         default=self.config_entry.data.get(CONF_WEBSOCKET_PORT),
-#                     ): int,
-#                 }
-#             ),
-#             # data_schema=vol.Schema(
-#             #     {
-#             #         vol.Required(x, default=self.options.get(x, True)): bool
-#             #         for x in sorted(PLATFORMS)
-#             #     }
-#             # ),
-#         )

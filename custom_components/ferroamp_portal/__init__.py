@@ -1,5 +1,5 @@
 """
-Custom integration to integrate Saleryd HRV system with Home Assistant.
+Home assistant integration to provide data missing from ext api by querying Ferroamp Portal APIs
 """
 import asyncio
 import logging
