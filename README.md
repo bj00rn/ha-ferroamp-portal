@@ -11,8 +11,11 @@ The integration connects to Ferroamp portal apis using provided credentials
 - [ ] Alter system configuration
   - [ ] Enable/Disable/Set import/export limit
 
+## Installation ##
+1. Add project as custom repository in HACS
+2. Configure integration in home assistant
 
 ### Disclaimer ###
-Use at own risk. Project is beta and subject to change and might break at any release.
+This is a project for primarily for private use, Use at own risk. Project is subject to change and might break at any release.
 
 
