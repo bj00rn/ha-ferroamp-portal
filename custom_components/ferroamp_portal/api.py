@@ -49,7 +49,6 @@ class ApiClient:
         password: str,
         system_id: int,
     ) -> None:
-
         assert username, "username not provided"
         assert password, "password not provided"
         assert system_id, "facility ID not provided"
@@ -81,7 +80,19 @@ class ApiClient:
             "variables": {"facilityId": f"{self.system_id}"},
             "extensions": {},
             "operationName": "OnEvseMetervalue",
-            "query": "subscription OnEvseMetervalue($facilityId: FacilityID!) {\n  newEvseMeterValue(facilityId: $facilityId) {\n    terminalId\n    timestamp\n    powerActive\n    energyActiveMeter\n    currentL1\n    currentL2\n    currentL3\n    __typename\n  }\n}\n",
+            "query": """subscription OnEvseMetervalue($facilityId: FacilityID!) {
+    newEvseMeterValue(facilityId: $facilityId) {
+        terminalId
+        timestamp
+        powerActive
+        energyActiveMeter
+        currentL1
+        currentL2
+        currentL3
+        __typename
+    }
+}
+""",
         }
         try:
             async with self.session.post(
@@ -97,16 +108,18 @@ class ApiClient:
                         decoded_line: str = line.decode("utf-8")
                         _LOGGER.debug("Received [%s]", decoded_line)
                         if re.match("^data: ", decoded_line):
-                            self.data = json.loads(decoded_line.split(": ", 1)[1])[
-                                "data"
-                            ]["newEvseMeterValue"]
+                            message = json.loads(decoded_line.split(": ", 1)[1])
+                            if message.get("errors"):
+                                raise Exception(
+                                    f"Query returned errors {message.get('errors')}"
+                                )
+                            self.data = message["data"]["newEvseMeterValue"]
         except (asyncio.TimeoutError, TimeoutError):
             _LOGGER.warning("Connection timeout", exc_info=True)
         except aiohttp.ClientError:
             _LOGGER.error("Connection error", exc_info=True)
-        except Exception as e:
+        except Exception as e:  # pylint: disable=broad-except
             _LOGGER.error("Unexpected exception", exc_info=True)
-            raise e
 
         self.retry()
 
