@@ -4,5 +4,15 @@
     "python.pythonPath": "/usr/local/bin/python",
     "files.associations": {
         "*.yaml": "home-assistant"
+    },
+    "search.exclude": {
+        "config": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "hass": true,
     }
 }
